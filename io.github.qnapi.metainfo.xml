@@ -33,6 +33,11 @@
 	<url type="bugtracker">https://github.com/QNapi/qnapi/issues</url>
 	<url type="help">https://qnapi.github.io/#help</url>
 	<releases>
+		<release date="2025-11-18" version="0.2.4" type="stable">
+			<description>
+				<p>Updated Flatpak runtime to KDE 5.15 LTS for continued security support and to resolve end-of-life warnings.</p>
+			</description>
+		</release>
 		<release date="2017-05-17" version="0.2.3" />
 	</releases>
 </component>

@@ -1,7 +1,7 @@
 app-id: io.github.qnapi
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: "5.14"
+runtime-version: "5.15-24.08"
 command: qnapi
 rename-icon: qnapi
 rename-desktop-file: qnapi.desktop
@@ -26,18 +26,25 @@ cleanup:
   - /lib/*.la
   - /share/cmake
   - /share/man
+  - /7z2501-linux-x64.tar.xz
+  - /7zz
+  - /7zzs
+  - /License.txt
+  - /History.txt
+  - /readme.txt
+  - /MANUAL
 modules:
   - name: p7zip
-    no-autogen: true
-    make-args:
-      - 7z
+    buildsystem: simple
+    build-commands:
+      - tar -xf 7z2501-linux-x64.tar.xz
+      - mkdir -p /app/bin
+      - install -Dm755 7zz /app/bin/7z
     sources:
-      - type: archive
-        url: https://sourceforge.net/projects/p7zip/files/p7zip/16.02/p7zip_16.02_src_all.tar.bz2
-        sha256: 5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f
-      - type: shell
-        commands:
-          - sed -i 's|/usr/local|/app|g' makefile.common
+      - type: file
+        url: https://www.7-zip.org/a/7z2501-linux-x64.tar.xz
+        sha256: 4ca3b7c6f2f67866b92622818b58233dc70367be2f36b498eb0bdeaaa44b53f4
+        dest-filename: 7z2501-linux-x64.tar.xz
 
   - name: libzen
     subdir: "Project/GNU/Library"
